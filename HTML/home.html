@@ -1,0 +1,1168 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>sigma</title>
+	<link rel="stylesheet" href="../CSS/style.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+	<script>
+		var pagename = "Home";
+	</script>
+
+	<style>
+		.lap {
+			transition: opacity 1s;
+			transition: opacity 1;
+			/* transition: opacity; */
+		}
+
+		.lap:hover {
+			opacity: 0.7;
+		}
+
+		.lap span {
+			text-decoration: line-through;
+			padding-left: 5px;
+			color: #c0c0c0;
+		}
+
+		
+
+		.lap p .CenteredLine {
+			text-decoration: line-through;
+			padding-left: 5px;
+			color: #c0c0c0;
+		}
+
+		p.CenteredLine {
+			text-decoration: line-through;
+			padding-left: 5px;
+			color: #c0c0c0;
+		}
+
+		.con {
+			overflow: auto;
+			display: flex;
+			margin-bottom: 26px;
+		}
+
+		/***********************************************************************/
+		/* The Modal (background) */
+		.modal {
+			display: none;
+			/* Hidden by default */
+			position: fixed;
+			/* Stay in place */
+			z-index: 1;
+			/* Sit on top */
+			left: 0;
+			top: 0;
+			width: 100%;
+			/* Full width */
+			height: 100%;
+			/* Full height */
+			overflow: auto;
+			/* Enable scroll if needed */
+			background-color: rgb(0, 0, 0);
+			/* Fallback color */
+			background-color: rgba(0, 0, 0, 0.4);
+			/* Black w/ opacity */
+			padding-top: 60px;
+		}
+
+		/* Modal Content/Box */
+		.modal-content {
+			background-color: #fefefe;
+			border: 1px solid #888;
+			width: 811px;
+			/* Could be more or less, depending on screen size */
+			display: flex;
+			left: calc(50% - 400px);
+			position: relative;
+			top: 20vh;
+			height: 600;
+		}
+
+		/* Add Zoom Animation */
+		.animate {
+			animation: animatezoom 0.6s;
+		}
+
+		@keyframes animatezoom {
+			from {
+				transform: scale(0);
+			}
+
+			to {
+				transform: scale(1);
+			}
+		}
+
+		/**********************************************************************/
+
+		.con img {
+			width: 276;
+			height: 276;
+		}
+
+		.cap {
+			line-height: auto;
+			display: flex;
+			flex-direction: column;
+			margin-left: 26px;
+		}
+
+		.laps {
+			border: 1px solid #ddd;
+			width: 300;
+			height: 300;
+		}
+
+		.con span {
+			text-decoration: line-through;
+			padding-left: 5px;
+			color: #c0c0c0;
+		}
+
+		.price {
+			color: #58acdf;
+		}
+
+		.description {
+			border-left: 5px outset #d33434;
+			padding-left: 15px;
+			margin-bottom: 20;
+			height: -webkit-fill-available;
+			line-height: 2.5;
+		}
+
+		figure .button {
+			/* width: 100%; */
+			height: 32px;
+			background-color: #5cb85c;
+			color: white;
+			margin-top: 15px;
+			border: 0px solid;
+			font-size: 20px;
+			border-radius: 6%;
+			transition: opacity 1s;
+			position: relative;
+			padding-bottom: 4px;
+		}
+
+		.button:hover {
+			border: 0px;
+			background-color: #56a856;
+			font-size: 23px;
+			cursor: pointer;
+		}
+
+		.con figure {
+			display: flex;
+		}
+	</style>
+</head>
+
+<body onload="after_loading();showSlide();" style="display: flex">
+	<header style="
+				background: white;
+				width: 100%;
+				z-index: 10;
+				position: fixed;
+				height: 100; /* left: 0; */ /* top: 0; */
+				box-shadow: 1px 1px 5px rgb(0 0 0 / 30%);
+			">
+		<div style="
+					background: white;
+					width: 1920;
+					z-index: 10;
+					position: fixed;
+					height: 100;
+					left: 50%;
+					top: 0;
+					transform: translateX(-50%);
+				">
+			<div class="logo" style="
+						width: calc(1920 / 20);
+						height: 100%;
+						position: absolute; /* left: 0; */
+						width: 20%;
+						left: 10%;
+					">
+				<img src="../Images/logo.png" alt="logo" />
+			</div>
+
+			<form action="javascript:_search();" style="
+						width: 50%;
+						height: 100%;
+						position: absolute;
+						left: 27%;
+						top: 0;
+					">
+				<input type="search" id="store" placeholder="key word here" onkeyup="_search();" />
+				<input type="submit" value="search" id="search" />
+			</form>
+
+			<div class="account" style="
+						width: 25%;
+						height: 100%;
+						position: absolute;
+						right: 0;
+						top: 0;
+						float: right;
+					">
+				<div class="my_account">
+					<p>my account</p>
+				</div>
+				<div class="log_in" style="
+							position: absolute;
+							width: 37%;
+							height: 32%;
+							left: 35%;
+							top: 50%;
+						">
+					<a href="Login-Register.html"> login / register </a>
+				</div>
+				<div class="person" style="
+							position: absolute;
+							left: 21%;
+							top: 0;
+							width: 12%;
+							height: 100%;
+						">
+					<img src="../Images/person.png" alt="person" />
+
+					<button id="SaveChanges" onclick="SaveChanges()" style="display: none ;">
+						Save Changes
+					</button>
+				</div>
+			</div>
+		</div>
+	</header>
+	<nav style="position: relative; width: 100%; height: 80; margin-top: 100">
+		<ul style="
+					height: 100%;
+					width: 900;
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+				">
+			<li ><a href="home.html">HOME</a></li>
+			<li><a href="about us.html">ABOUT US</a></li>
+			<li><a href="contact us.html">CONTACT US</a></li>
+			<li><a href="javascript:call('special offer')">SPECIAL OFFER </a></li>
+		</ul>
+	</nav>
+	<div style="
+				position: relative;
+				width: 1717px;
+				height: 460px;
+				left: 50%;
+				transform: translateX(-46%);
+				display: flex;
+				flex-flow: wrap;
+				margin-top: 20px;
+			">
+		<div class="container-slidshow" style="
+					position: relative;
+					width: 1100;
+					height: 455;
+					display: flex;
+					margin-right: 5;
+					flex-direction: column;
+				">
+			<div class="myslides fade" style="display: none">
+				<img src="../Images/ad1.jpg" class="fade" alt="lap" id="ads" />
+			</div>
+			<div class="myslides fade" style="display: none">
+				<img src="../Images/ad12.jpg" class="fade" alt="lap" id="ads" />
+			</div>
+			<div class="myslides fade" style="display: block">
+				<img src="../Images/ad123.jpg" class="fade" alt="lap" id="ads" />
+			</div>
+
+			<div class="myslides fade" style="display: none">
+				<img src="../Images/ad1234.jpg" class="fade" alt="lap" id="ads" />
+			</div>
+			<div style="
+						text-align: center;
+						width: 400;
+						position: relative;
+						bottom: 0;
+						left: 50%;
+						z-index: 1;
+						bottom: -434px;
+						transform: translateX(-50%);
+					">
+				<span class="dot" onclick="currentSlide(0)"></span>
+				<span class="dot" onclick="currentSlide(1)"></span>
+				<span class="dot active" onclick="currentSlide(2)"></span>
+				<span class="dot" onclick="currentSlide(3)"></span>
+			</div>
+		</div>
+
+		<div style="
+					/* position: relative; */ /* top: -12px; */
+					position: relative; /* height: 452px; */ /* left: calc( 1100px + 135px ); */ /* width: 594px; */
+					display: flex;
+					flex-direction: column;
+					margin-right: 5;
+				">
+			<img src="../Images/ad3.jpg" alt="lap" style="
+						width: 300;
+						height: 225; /* position: relative; */ /* right: -1334px; */ /* bottom: 510px; */
+						margin-bottom: 5;
+					" />
+			<img src="../Images/ad4.jpg" alt="lap" style="
+						width: 300;
+						height: 225; /* position: relative; */ /* right: -1334px; */ /* bottom: 510px; */
+					" />
+		</div>
+		<div style="
+					/* position: relative; */ /* top: -12px; */
+					position: relative; /* height: 452px; */ /* left: calc( 1100px + 135px ); */ /* width: 594px; */ /* top: 222px; */
+					display: flex;
+					flex-direction: column;
+				" id="laps">
+			<img src="../Images/ad5.jpg" alt="lap" style="
+						width: 300;
+						height: 225; /* position: relative; */ /* right: -1334px; */ /* bottom: 510px; */
+						margin-bottom: 5;
+					" />
+			<img src="../Images/ad2.jpg" alt="lap" style="
+						width: 300;
+						height: 225; /* position: relative; */ /* right: -1334px; */ /* bottom: 510px; */
+					" />
+		</div>
+	</div>
+	<div class="all" id="laps" style="
+				margin-top: 30px;
+				flex-flow: wrap;
+				margin-bottom: 200;
+				margin-left: 152px;
+			">
+		<div class="lap" name="home" style="display: flex">
+			<figure>
+				<img src="../Images/lap1.png" onclick="document.getElementById('id00').style.display='block'" />
+				<figcaption>
+					<a href="" onclick="document.getElementById('id01').style.display='block'">
+						Lenovo Legion 5 15ACH6 Ryzen 7 5800H RAM 16GB 512GB SSD<br />
+						15.6 FHD GeForce RTX 3050 TI 4GB WIN 1
+					</a>
+					<div style="display: flex">
+						<p class="actual_price">23999 LE</p>
+						<p class="CenteredLine">20000</p>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="lap" name="home" style="display: flex">
+			<figure>
+				<img src="../Images/lap2.png" onclick="document.getElementById('id10').style.display='block'" />
+				<figcaption>
+					<a href="" onclick="document.getElementById('id01').style.display='block'">ASUS TUF Gaming F15
+						FX507ZM-HN010W Intel Core i7-12700H <br />
+						Ram 16GB 1TB M.2 15.6 GeForce RTX 3060 6GB WIN 11
+					</a>
+					<div style="display: flex">
+						<p class="actual_price">29499 LE</p>
+						<p class="CenteredLine">31000</p>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="lap" name="home" style="display: flex">
+			<figure>
+				<img src="../Images/lap3.png" onclick="document.getElementById('id20').style.display='block'" />
+				<figcaption>
+					<a href="" onclick="document.getElementById('id01').style.display='block'">HP Laptop 15-dw3014ne
+						Intel Core i5 1135G7 256 GB M.2 8 GB <br />
+						Ram 15.6 FHD GeForce MX350 2 GB
+					</a>
+					<div style="display: flex">
+						<p class="actual_price">11799 LE</p>
+						<p class="CenteredLine">16000</p>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="lap" name="home" style="display: flex">
+			<figure>
+				<img src="../Images/lap4.png" onclick="document.getElementById('id30').style.display='block'" />
+				<figcaption>
+					<a href="" onclick="document.getElementById('id01').style.display='block'">HP Pavilion Gaming Laptop
+						15-dk2106ne Intel Core i5-11300H RAM 16
+						GB<br />
+						256 GB M.2 1 TB HDD 15.6 60HZ GeForce RTX 3050 4 GB
+					</a>
+					<div style="display: flex">
+						<p class="actual_price">17777 LE</p>
+						<p class="CenteredLine">21000</p>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="lap" name="home" style="display: flex">
+			<figure>
+				<img src="../Images/lap5.png" onclick="document.getElementById('id40').style.display='block'" />
+				<figcaption>
+					<a href="" onclick="document.getElementById('id01').style.display='block'">HP ProBook 455 G8 Ryzen 5
+						5600U RAM 8GB 256GB SSD 15.6FHD</a>
+					<div style="display: flex">
+						<p class="actual_price">17499 LE</p>
+						<p class="CenteredLine">18500</p>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="lap" name="home" style="display: flex">
+			<figure>
+				<img src="../Images/lap6.png" onclick="document.getElementById('id50').style.display='block'" />
+				<figcaption>
+					<a href="">HP Pavilion Gaming Laptop 15-ec2033ne AMD Ryzen 7 5800H 16GB RAM
+						256GB M.2 SSD 1 TB HDD 15.6 FHD IPS GeForce RTX 3050Ti 4 GB</a>
+					<div style="display: flex">
+						<p class="actual_price">21499 LE</p>
+						<p class="CenteredLine">23000</p>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="lap" name="special offer" style="display: flex">
+			<figure>
+				<img src="../Images/lap7.png" onclick="document.getElementById('id60').style.display='block'" />
+				<figcaption>
+					<a href="" onclick="document.getElementById('id01').style.display='block'">Lenovo Legion 7 16ITHg6
+						Intel Core i7-11800H 16GB RAM 1TB SSD 16"
+						WQXGA IPS 165Hz GeForce RTX 3070 8GB WIN 11</a>
+					<div style="display: flex">
+						<p class="actual_price">44999 LE</p>
+						<p class="CenteredLine">49999</p>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="lap" name="special offer" style="display: flex">
+			<figure>
+				<img src="../Images/lap8.png" onclick="document.getElementById('id70').style.display='block'" />
+				<figcaption>
+					<a href="" onclick="document.getElementById('id01').style.display='block'">
+						Lenovo IdeaPad Gaming 3 15ACH6 AMD Ryzen 7 5800H 16GB RAM 512GB
+						SSD 15.6 FHD IPS 120Hz GeForce RTX 3050 Ti 4GB</a>
+					<div style="display: flex">
+						<p class="actual_price">20999 LE</p>
+						<p class="CenteredLine">22999</p>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="lap" name="special offer" style="display: flex">
+			<figure>
+				<img src="../Images/lap9.png" onclick="document.getElementById('id80').style.display='block'" />
+				<figcaption>
+					<a href="" onclick="document.getElementById('id01').style.display='block'">Dell G15 5511 Core
+						i5-11400H RAM 8GB 512GB M.2 15.6 inch FHD
+						120Hz GeForce RTX 3050 4GB</a>
+					<div style="display: flex">
+						<p class="actual_price">17850 LE</p>
+						<p class="CenteredLine">20999</p>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="lap" name="special offer" style="display: flex">
+			<figure>
+				<img src="../Images/lap10.png" onclick="document.getElementById('id90').style.display='block'" />
+				<figcaption>
+					<a href="" onclick="document.getElementById('id01').style.display='block'">Lenovo IdeaPad 5 15ITL05
+						Intel Core i7-1165G7 8GB RAM 512GB<br />
+						SSD 15.6 FHD TN GeForce MX450 2GB WITH FINGERPRINT
+					</a>
+					<div style="display: flex">
+						<p class="actual_price">15888 LE</p>
+						<p class="CenteredLine">19999</p>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="lap" name="special offer" style="display: flex">
+			<figure>
+				<img src="../Images/lap11.png" onclick="document.getElementById('id11').style.display='block'" />
+				<figcaption>
+					<a href="" onclick="document.getElementById('id01').style.display='block'">HP Victus
+						16-d1002ne Gaming Laptop Intel Core i7-12700H -16
+						GB<br />
+						RAM - 1TB M.2 SSD -16.1 FHD NVIDIA RTX 3050 4GB
+					</a>
+					<div style="display: flex">
+						<p class="actual_price">24499 LE</p>
+						<p class="CenteredLine">26500</p>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="lap" name="special offer" style="display: flex">
+			<figure>
+				<img src="../Images/lap12.png" onclick="document.getElementById('id12').style.display='block'" />
+				<figcaption>
+					<a href="" onclick="document.getElementById('id01').style.display='block'">HP Pavilion Gaming Laptop
+						15-dk2087ne Intel Core i5-11300H 8 GB
+						RAM 256 GB<br />
+						M.2 SSD 1 TB HDD 15.6 FHD 144Hz IPS GeForce GTX 1650 4 GB
+					</a>
+					<div style="display: flex">
+						<p class="actual_price">16499 LE</p>
+						<p class="CenteredLine">18000</p>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="lap" name="special offer" style="display: flex">
+			<figure>
+				<img src="../Images/lap13.png" onclick="document.getElementById('id13').style.display='block'" />
+				<figcaption>
+					<a href="" onclick="document.getElementById('id01').style.display='block'"></a><a href="">LENOVO
+						Legion 5 15ITH6H 82JH006WAX Intel Core i5-11400H 16GB RAM
+						1TB SSD M.2 15.6 FHD GeForce RTX 3060 6GB</a>
+					<div style="display: flex">
+						<p class="actual_price">24499 LE</p>
+						<p class="CenteredLine">26000</p>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="lap" name="special offer" style="display: flex">
+			<figure>
+				<img src="../Images/lap14.png" onclick="document.getElementById('id14').style.display='block'" />
+				<figcaption>
+					<a href="">Dell G15 5510 Intel Core i5- 10200H-RAM 8GB 256GB 15.6 inch FHD
+						120Hz GTX 1650 4GB WIN 10</a>
+					<div style="display: flex">
+						<p class="actual_price">14222 LE</p>
+						<p class="CenteredLine">16000</p>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="lap" name="special offer" style="display: flex">
+			<figure>
+				<img src="../Images/lap15.png" onclick="document.getElementById('id15').style.display='block'" />
+				<figcaption>
+					<a href="">
+						MSI Sword 15 A11UD-001US Core i7-11800H RAM 8GB 512GB NVMe SSD
+						15.6 FHD IPS 144Hz NVIDIA GeForce RTX 3050 Ti 4GB Win 10</a>
+					<div style="display: flex">
+						<p class="actual_price">22050 LE</p>
+						<p class="CenteredLine">24499</p>
+					</div>
+				</figcaption>
+			</figure>
+		</div>
+	</div>
+	<div id="id00" class="modal">
+		<form class="modal-content animate" method="post">
+			<div class="con">
+				<figure>
+					<div class="laps"><img src="../Images/lap1.png" alt="" /></div>
+					<figcaption class="cap">
+						<h3>
+							Lenovo Legion 5 15ACH6 Ryzen 7 5800H RAM 16GB 512GB SSD<br />
+							15.6 FHD GeForce RTX 3050 TI 4GB WIN 1
+						</h3>
+						<div style="display: flex" >
+							<p style="color: #58acdf;">23999 LE</p>
+							<p class="CenteredLine">20000</p>
+						</div>
+						<div class="description">
+							<p style="height: 40%">
+								Processor <br />
+								Intel Core i7-11800H (8C / 16T, 2.3 / 4.6GHz, 24MB) Graphics
+								NVIDIA GeForce RTX 3060 6GB GDDR6, Boost Clock 1425 / 1702MHz,
+								TGP 130W Memory 16GB (2x 8GB) SO-DIMM DDR4-3200 Storage 1TB
+								SSD M.2 2280 PCIe 4.0x4 NVMe Display 16" WQXGA (2560x1600) IPS
+								500nits Anti-glare, 165Hz, 100% sRGB, Dolby Vision, HDR 400,
+								G-Sync, DC dimmer Operating System Windows 11 Home 64, Arabic
+								/ English Keyboard 4-Zone RGB Backlit, Arabic
+							</p>
+						</div>
+						<input type="button" value="see more " class="button" />
+					</figcaption>
+				</figure>
+			</div>
+		</form>
+	</div>
+	<div id="id10" class="modal">
+		<form class="modal-content animate" method="post">
+			<div class="con">
+				<figure>
+					<div class="laps"><img src="../Images/lap2.png" alt="" /></div>
+					<figcaption class="cap">
+						<h3>
+							ASUS TUF Gaming F15 FX507ZM-HN010W Intel Core i7-12700H <br />
+							Ram 16GB 1TB M.2 15.6 GeForce RTX 3060 6GB WIN 11
+						</h3>
+						<div style="display: flex">
+							<p style="color: #58acdf;">29499 LE</p>
+							<p class="CenteredLine">31000</p>
+						</div>
+						<div class="description">
+							<p style="height: 40%">
+								Processor <br />
+								12th Gen Intel® Core™ i7-12700H Processor 2.3 GHz (24M Cache,
+								up to 4.7 GHz, 14 cores: 6 P-cores and 8 E-cores) Graphics
+								NVIDIA® GeForce RTX™ 3060 Laptop GPU 1752MHz* at 140W (1702MHz
+								Boost Clock+50MHz OC, 115W+25W Dynamic Boost) Memory 16GB
+								DDR5-4800, SO-DIMM x 2 slot, Max Capacity: 32GB Storage 1TB
+								M.2 NVMe™ PCIe® 3.0 SSD Display 15.6-inch, FHD (1920 x 1080)
+								16:9, anti-glare display, sRGB:62.5%, Adobe:47.34%, Refresh
+								Rate:144Hz, IPS-level, Adaptive-Sync, MUX Switch + Optimus
+								Operating System Windows 11 Home Keyboard and Touchpad Backlit
+								Chiclet Keyboard RGB
+							</p>
+						</div>
+						<input type="button" value="see more " class="button" />
+					</figcaption>
+				</figure>
+			</div>
+		</form>
+	</div>
+	<div id="id20" class="modal">
+		<form class="modal-content animate" method="post">
+			<div class="con">
+				<figure>
+					<div class="laps"><img src="../Images/lap3.png" alt="" /></div>
+					<figcaption class="cap">
+						<h3>
+							HP Laptop 15-dw3014ne Intel Core i5 1135G7 256 GB M.2 8 GB
+							<br />
+							Ram 15.6 FHD GeForce MX350 2 GB
+						</h3>
+						<div style="display: flex">
+							<p style="color: #58acdf;">11799 LE</p>
+							<p class="CenteredLine">16000</p>
+						</div>
+						<div class="description">
+							<p style="height: 40%">
+								Microprocessor <br>
+								Intel® Core™ i5-1135G7 (up to 4.2 GHz with Intel® Turbo Boost
+								Technology, 8 MB L3 cache, 4 cores) Video graphics NVIDIA®
+								GeForce® MX350 2GB Memory, standard 8 GB DDR4-3200MHz RAM (1 x
+								8 GB) Hard drive 256 GB PCIe® NVMe™ M.2 SSD Display 39.6 cm
+								(15.6") diagonal, FHD (1920 x 1080), micro-edge, anti-glare,
+								250 nits, 45% NTSC
+							</p>
+						</div>
+						<input type="button" value="see more " class="button" />
+					</figcaption>
+				</figure>
+			</div>
+		</form>
+	</div>
+
+	<div id="id30" class="modal">
+		<form class="modal-content animate" method="post">
+			<div class="con">
+				<figure>
+					<div class="laps"><img src="../Images/lap4.png" alt="" /></div>
+					<figcaption class="cap">
+						<h3>
+							HP Pavilion Gaming Laptop 15-dk2106ne Intel Core i5-11300H RAM
+							16 GB<br />
+							256 GB M.2 1 TB HDD 15.6 60HZ GeForce RTX 3050 4 GB
+						</h3>
+						<div style="display: flex">
+							<p style="color: #58acdf;">17777 LE</p>
+							<p class="CenteredLine">21000</p>
+						</div>
+						<div class="description">
+							<p style="height: 40%">
+								Microprocessor <br />
+								Intel® Core™ i5-11300H (up to 4.4 GHz with Intel® Turbo Boost
+								Technology, 8 MB L3 cache, 4 cores) Video graphics NVIDIA®
+								GeForce RTX™ 3050 Laptop GPU (4 GB GDDR6 dedicated) Memory,
+								standard 16 GB DDR4-3200 MHz RAM (2 x 8 GB) Hard drive 256 GB
+								PCIe® NVMe™ M.2 SSD 1 TB 7200 rpm SATA HDD Display 39.6 cm
+								(15.6") diagonal, FHD (1920 x 1080) 60HZ, IPS, micro-edge,
+								anti-glare, 300 nits, 72% NTSC
+							</p>
+						</div>
+						<input type="button" value="see more " class="button" />
+					</figcaption>
+				</figure>
+			</div>
+		</form>
+	</div>
+	<div id="id40" class="modal">
+		<form class="modal-content animate" method="post">
+			<div class="con">
+				<figure>
+					<div class="laps"><img src="../Images/lap5.png" alt="" /></div>
+					<figcaption class="cap">
+						<h3>HP ProBook 455 G8 Ryzen 5 5600U RAM 8GB 256GB SSD 15.6FHD</h3>
+						<div style="display: flex">
+							<p style="color: #58acdf;">17499 LE</p>
+							<p class="CenteredLine">18500</p>
+						</div>
+						<div class="description">
+							<p style="height: 40%">
+								processors <br />
+								ASSY BU IDS UMA Ryzen5 5600U 445 G8 graphic card AMD Radeon™
+								Graphics Memory SODIMM, 8GB, DDR4-3200, Mic, Z41C/R storage
+								256GB M.2 2280 BC711 PCIe Gen3x4 value Display 15.6FHD AG UWVA
+								EDP NB BENT 250N KEYBOARD ASSY KBD CP num kypd SR NG/AR ADPTR
+								65W nPFC Smart 3P RC 4.5mm
+							</p>
+						</div>
+						<input type="button" value="see more " class="button" />
+					</figcaption>
+				</figure>
+			</div>
+		</form>
+	</div>
+	<div id="id50" class="modal">
+		<form class="modal-content animate" method="post">
+			<div class="con">
+				<figure>
+					<div class="laps"><img src="../Images/lap6.png" alt="" /></div>
+					<figcaption class="cap">
+						<h3>HP Pavilion Gaming Laptop 15-ec2033ne AMD Ryzen 7 5800H 16GB RAM
+						256GB M.2 SSD 1 TB HDD 15.6 FHD IPS GeForce RTX 3050Ti 4 GB</h3>
+						<div style="display: flex">
+							<p style="color: #58acdf;">21499 LE</p>
+							<p class="CenteredLine">23000</p>
+						</div>
+						<div class="description">
+							<p style="height: 40%">
+								Processor <br>
+								AMD Ryzen™ 7 5800H (up to 4.4 GHz max boost clock, 16 MB L3 cache, 8 cores, 16 threads) 1 2 Graphics
+								Discrete,
+								NVIDIA® GeForce RTX™ 3050TI Laptop GPU (4 GB GDDR6 dedicated)Memory
+								16 GB DDR4-3200 MHz RAM (2 x 8 GB)
+								Internal Storage
+								256 GB PCIe® NVMe™ TLC M.2 SSD
+								Hard drive (2nd)
+								1 TB 7200 rpm SATA HDD
+								Display
+								39.6 cm (15.6") diagonal, FHD (1920 x 1080), IPS, micro-edge, anti-glare, 250 nits, 45% NTSC 3
+								Operating system
+								FreeDOS 
+								Keyboard
+								Full-size, acid green backlit, shadow black keyboard with numeric keypad
+							</p>
+						</div>
+						<input type="button" value="see more " class="button" />
+					</figcaption>
+				</figure>
+			</div>
+		</form>
+	</div>
+	<div id="id60" class="modal">
+		<form class="modal-content animate" method="post">
+			<div class="con">
+				<figure>
+					<div class="laps"><img src="../Images/lap7.png" alt="" /></div>
+					<figcaption class="cap">
+						<h3>Lenovo Legion 7 16ITHg6
+							Intel Core i7-11800H 16GB RAM 1TB SSD 16"
+							WQXGA IPS 165Hz GeForce RTX 3070 8GB WIN 11</h3>
+						<div style="display: flex">
+							<p style="color: #58acdf;">44999 LE</p>
+							<p class="CenteredLine">49999</p>
+						</div>
+						<div class="description">
+							<p style="height: 40%">
+								Processor <br>
+								Intel Core i7-11800H (8C / 16T, 2.3 / 4.6GHz, 24MB)
+								Graphics 
+								NVIDIA GeForce RTX 3070 8GB GDDR6, Boost Clock 1560 / 1620MHz, TGP 140W
+								Memory 
+								16GB (2x 8GB) SO-DIMM DDR4-3200
+								Storage 
+								1TB SSD M.2 2280 PCIe 4.0x4 NVMe
+								Display 
+								16" WQXGA (2560x1600) IPS 500nits Anti-glare, 165Hz, 100% sRGB, Dolby Vision, HDR 400, G-Sync, DC dimmer
+								Operating System 
+								Windows 11 Home 64, Arabic / English
+								Keyboard 
+								RGB Backlit, Arabic
+							</p>
+						</div>
+						<input type="button" value="see more " class="button" />
+					</figcaption>
+				</figure>
+			</div>
+		</form>
+	</div>
+	<div id="id70" class="modal">
+		<form class="modal-content animate" method="post">
+			<div class="con">
+				<figure>
+					<div class="laps"><img src="../Images/lap8.png" alt="" /></div>
+					<figcaption class="cap">
+						<h3>Lenovo IdeaPad Gaming 3 15ACH6 AMD Ryzen 7 5800H 16GB RAM 512GB
+							SSD 15.6 FHD IPS 120Hz GeForce RTX 3050 Ti 4GB</h3>
+						<div style="display: flex">
+							<p style="color: #58acdf;">20999 LE</p>
+							<p class="CenteredLine">22999</p>
+						</div>
+						<div class="description">
+							<p style="height: 40%">
+								Processor <br>
+								AMD Ryzen 7 5800H (8C / 16T, 3.2 / 4.4GHz, 4MB L2 / 16MB L3)
+								Graphics 
+								NVIDIA GeForce RTX 3050 Ti 4GB GDDR6, Boost Clock 1485 / 1597.5MHz, TGP 85WAMD Ryzen 7 5800H (8C / 16T, 3.2 / 4.4GHz, 4MB L2 / 16MB L3)
+								Memory 
+								16GB (1x 16GB) SO-DIMM DDR4-3200
+								Storage 
+								512GB SSD M.2 2280 PCIe 3.0x4 NVMe
+								Display 
+								15.6" FHD (1920x1080) IPS 250nits Anti-glare, 120Hz, 45% NTSC, DC dimmer
+								Operating System 
+								None
+								Keyboard 
+								White Backlit, Arabic
+							</p>
+						</div>
+						<input type="button" value="see more " class="button" />
+					</figcaption>
+				</figure>
+			</div>
+		</form>
+	</div>
+	<div id="id80" class="modal">
+		<form class="modal-content animate" method="post">
+			<div class="con">
+				<figure>
+					<div class="laps"><img src="../Images/lap9.png" alt="" /></div>
+					<figcaption class="cap">
+						<h3>Dell G15 5511 Core
+							i5-11400H RAM 8GB 512GB M.2 15.6 inch FHD
+							120Hz GeForce RTX 3050 4GB</h3>
+						<div style="display: flex">
+							<p style="color: #58acdf;">17850 LE</p>
+							<p class="CenteredLine">20999</p>
+						</div>
+						<div class="description">
+							<p style="height: 40%">
+								11th Generation Intel(R) Core( TM) i5-11400H 
+								NVIDIA(R) GeForce RTX(TM) 3050 4GB GDDR6
+								8GB, 1x8GB, DDR4, 3200MHz
+								512GB M.2 PCIe NVMe Solid Stat e Drive
+								15.6 inch FHD (1920 x 1080) 12 0Hz 250 nits WVA Anti- Glare L ED Backlit Narrow Border Displ ay
+								Additional Software Ubuntu Linux 20.04
+								Internal Arabic Qwerty Backli t Keyboard with Numeric Keypad (No G-Key)
+							</p>
+						</div>
+						<input type="button" value="see more " class="button" />
+					</figcaption>
+				</figure>
+			</div>
+		</form>
+	</div>
+	<div id="id90" class="modal">
+		<form class="modal-content animate" method="post">
+			<div class="con">
+				<figure>
+					<div class="laps"><img src="../Images/lap10.png" alt="" /></div>
+					<figcaption class="cap">
+						<h3>Lenovo IdeaPad 5 15ITL05
+							Intel Core i7-1165G7 8GB RAM 512GB<br />
+							SSD 15.6 FHD TN GeForce MX450 2GB WITH FINGERPRINT</h3>
+						<div style="display: flex">
+							<p style="color: #58acdf;">15888 LE</p>
+							<p class="CenteredLine">19999</p>
+						</div>
+						<div class="description">
+							<p style="height: 40%">
+								Processor <br>
+								Intel Core i7-1165G7 (4C / 8T, 2.8 / 4.7GHz, 12MB)
+								Graphics 
+								NVIDIA GeForce MX450 2GB GDDR6
+								Memory 
+								8GB Soldered DDR4-3200
+								Storage 
+								512GB SSD M.2 2280 PCIe 3.0x4 NVMe
+								Display 
+								15.6" FHD (1920x1080) TN 250nits Anti-glare, 45% NTSC
+								Operating System 
+								None
+								Keyboard 
+								Non-backlit, Arabic
+							</p>
+						</div>
+						<input type="button" value="see more " class="button" />
+					</figcaption>
+				</figure>
+			</div>
+		</form>
+	</div>
+	<div id="id11" class="modal">
+		<form class="modal-content animate" method="post">
+			<div class="con">
+				<figure>
+					<div class="laps"><img src="../Images/lap11.png" alt="" /></div>
+					<figcaption class="cap">
+						<h3>HP Victus
+							16-d1002ne Gaming Laptop Intel Core i7-12700H -16
+							GB<br />
+							RAM - 1TB M.2 SSD -16.1 FHD NVIDIA RTX 3050 4GB</h3>
+						<div style="display: flex">
+							<p style="color: #58acdf;">24499 LE</p>
+							<p class="CenteredLine">26500</p>
+						</div>
+						<div class="description">
+							<p style="height: 40%">
+								Processor <br>
+								Intel® Core™ i7-12700H (up to 4.7 GHz with Intel® Turbo Boost Technology, 24 MB L3 cache, 14 cores, 20 threads) 1 2 
+								Graphics
+								Discrete,
+								NVIDIA® GeForce RTX™ 3050 Laptop GPU (4 GB GDDR6 dedicated)
+								Memory
+								16 GB DDR5-4800 MHz RAM (2 x 8 GB)
+								Internal Storage
+								1 TB PCIe® NVMe™ TLC M.2 SSD
+								Display
+								40.9 cm (16.1") diagonal, FHD (1920 x 1080), 144 Hz, 7 ms response time, IPS, micro-edge, anti-glare, Low Blue Light, 300 nits, 100% sRGB 3 4 5
+								Operating system
+								FreeDOS
+								Keyboard
+								Full-size, backlit, mica silver keyboard with numeric keypad
+							</p>
+						</div>
+						<input type="button" value="see more " class="button" />
+					</figcaption>
+				</figure>
+			</div>
+		</form>
+	</div>
+	<div id="id12" class="modal">
+		<form class="modal-content animate" method="post">
+			<div class="con">
+				<figure>
+					<div class="laps"><img src="../Images/lap12.png" alt="" /></div>
+					<figcaption class="cap">
+						<h3>HP Pavilion Gaming Laptop
+							15-dk2087ne Intel Core i5-11300H 8 GB
+							RAM 256 GB<br />
+							M.2 SSD 1 TB HDD 15.6 FHD 144Hz IPS GeForce GTX 1650 4 GB</h3>
+						<div style="display: flex">
+							<p style="color: #58acdf;">16499 LE</p>
+							<p class="CenteredLine">18000</p>
+						</div>
+						<div class="description">
+							<p style="height: 40%">
+								Processor <br>
+								Intel® Core™ i5-11300H (up to 4.4 GHz with Intel® Turbo Boost Technology, 8 MB L3 cache, 4 cores) 1 2 
+								Graphics
+								Discrete,
+								NVIDIA® GeForce® GTX 1650 Laptop GPU (4 GB GDDR6 dedicated)
+								Memory
+								8 GB DDR4-3200 MHz RAM (2 x 4 GB)
+								Internal Storage
+								256 GB PCIe® NVMe™ M.2 SSD
+								Hard drive (2nd)
+								1 TB 7200 rpm SATA HDD
+								Display
+								39.6 cm (15.6") diagonal, FHD (1920 x 1080), 144 Hz, 7 ms response time, IPS, micro-edge, anti-glare, 300 nits, 72% NTSC 3 4
+								Operating system
+								FreeDOS 
+								Keyboard
+								Full-size, shadow black keyboard with numeric keypad
+							</p>
+						</div>
+						<input type="button" value="see more " class="button" />
+					</figcaption>
+				</figure>
+			</div>
+		</form>
+	</div>
+	<div id="id13" class="modal">
+		<form class="modal-content animate" method="post">
+			<div class="con">
+				<figure>
+					<div class="laps"><img src="../Images/lap13.png" alt="" /></div>
+					<figcaption class="cap">
+						<h3>LENOVO
+							Legion 5 15ITH6H 82JH006WAX Intel Core i5-11400H 16GB RAM
+							1TB SSD M.2 15.6 FHD GeForce RTX 3060 6GB</h3>
+						<div style="display: flex">
+							<p style="color: #58acdf;">24499 LE</p>
+							<p class="CenteredLine">26000</p>
+						</div>
+						<div class="description">
+							<p style="height: 40%">
+								Processor <br>
+								Intel Core i5-11400H (6C / 12T, 2.7 / 4.5GHz, 12MB)
+								Graphics 
+								NVIDIA GeForce RTX 3060 6GB GDDR6, Boost Clock 1425 / 1702MHz, TGP 130W
+								Memory 
+								16GB 2x 8GB SO-DIMM DDR4-3200
+								Storage 
+								1TB SSD M.2 2280 PCIe 4.0x4 NVMe
+								Display 
+								15.6" FHD (1920x1080) IPS 300nits Anti-glare, 165Hz, 100% sRGB, Dolby Vision, G-Sync, DC dimmer
+								Keyboard 
+								4-Zone RGB Backlit, Arabic
+							</p>
+						</div>
+						<input type="button" value="see more " class="button" />
+					</figcaption>
+				</figure>
+			</div>
+		</form>
+	</div>
+	<div id="id14" class="modal">
+		<form class="modal-content animate" method="post">
+			<div class="con">
+				<figure>
+					<div class="laps"><img src="../Images/lap14.png" alt="" /></div>
+					<figcaption class="cap">
+						<h3>Dell G15 5510 Intel Core i5- 10200H-RAM 8GB 256GB 15.6 inch FHD
+							120Hz GTX 1650 4GB WIN 10</h3>
+						<div style="display: flex">
+							<p style="color: #58acdf;">14222 LE</p>
+							<p class="CenteredLine">16000</p>
+						</div>
+						<div class="description">
+							<p style="height: 40%">
+								Processor <br>
+								Intel® Core™ i5-10200H 10th generation 8MB Cache, up to 4.1 GHz, 4 cores
+								Video graphics
+								NVIDIA® GeForce® GTX 1650 4 GB
+								RAM
+								8GB, 1x8GB, DDR4 
+								Hard drive
+								256 SSD
+								Display
+								15.6" FHD 1920 X 1080 120 Hz
+								Operating System
+								Windos 10
+								Keyboard
+								Full-size island-style keyboard with numeric keypad
+							</p>
+						</div>
+						<input type="button" value="see more " class="button" />
+					</figcaption>
+				</figure>
+			</div>
+		</form>
+	</div>
+	<div id="id15" class="modal">
+		<form class="modal-content animate" method="post">
+			<div class="con">
+				<figure>
+					<div class="laps"><img src="../Images/lap15.png" alt="" /></div>
+					<figcaption class="cap">
+						<h3>MSI Sword 15 A11UD-001US Core i7-11800H RAM 8GB 512GB NVMe SSD
+							15.6 FHD IPS 144Hz NVIDIA GeForce RTX 3050 Ti 4GB Win 10</h3>
+						<div style="display: flex">
+							<p style="color: #58acdf;">22050 LE</p>
+							<p class="CenteredLine">24499</p>
+						</div>
+						<div class="description">
+							<p style="height: 40%">
+								CPU: Core i7-11800H 8 Core <br>
+								CPU SPEED: 2.4 - 4.6GHz
+								GPU: NVIDIA® GeForce RTX™ 3050 Ti Laptop GPU
+								Up to 1485MHz Boost Clock, 60W Maximum Graphics Power.
+								*May vary by scenario
+								VIDEO MEMORY: 4G GDDR6
+								MEMORY: 8GB (8G*1) DDR4 3200MHz
+								HDD CAPACITY: 512GB NVMe SSD
+								HDD INTERFACE: NVMe
+								OS: Windows 10 Home
+								KEYBOARD: Blue keyboard with Anti-Ghost key (99 Key)
+							</p>
+						</div>
+						<input type="button" value="see more " class="button" />
+					</figcaption>
+				</figure>
+			</div>
+		</form>
+	</div>
+	<footer class="footer" style="
+				position: relative;
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+			">
+		<div class="container" style="
+					width: 1920;
+					position: relative;
+					left: 50%;
+					margin: bo;
+					margin-bottom: 90;
+					transform: translateX(-50%);
+				">
+			<div class="row">
+				<div class="col">
+					<h4><b> get help </b></h4>
+					<ul typeof="square">
+						<li><a href="javascript:call()">web development</a></li>
+						<li><a href="javascript:call()">shipping and delivery</a></li>
+						<li><a href="javascript:call()">return and replacement</a></li>
+					</ul>
+				</div>
+				<div class="col">
+					<h4><b> Brands </b></h4>
+					<ul typeof="square">
+						<li>
+							<a href="javascript:call('WESTERN DIGITAL')">Western Digital</a>
+						</li>
+						<li><a href="javascript:call('KINGSTON')">Kingston</a></li>
+						<li><a href="javascript:call('LENOVO')">Lenovo</a></li>
+						<li><a href="javascript:call('DELL');">Dell</a></li>
+					</ul>
+				</div>
+
+				<div class="col">
+					<h4><b> Seller </b></h4>
+					<ul>
+						<li><a href="javascript:call('SIGMA')  ;">sigma</a></li>
+						<li><a href="javascript:call('AULA') ;">aula</a></li>
+						<li><a href="javascript:call('INGCO')  ;">ingco</a></li>
+						<li><a href="javascript:call('MSI') ;">msi</a></li>
+					</ul>
+				</div>
+				<div class="col">
+					<h4><b> SIGNUP FOR NEWSLETTER </b></h4>
+					<ul>
+						<h5>We’ll never share your email address with a third-party</h5>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /* icons -->
+		<div class="fotr" style="position: absolute; width: 100%; bottom: 0">
+			<div class="iner-foter">
+				<div class="social-links">
+					<ul>
+						<li class="social-items">
+							<a href="#"><i class="fa-brands fa-facebook"></i></a>
+						</li>
+						<li class="social-items">
+							<a href="#"><i class="fa-brands fa-square-twitter"></i></a>
+						</li>
+						<li class="social-items">
+							<a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+						</li>
+						<li class="social-items">
+							<a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+						</li>
+					</ul>
+				</div>
+				<div class="outer-foter">
+					sigma Computer© 2022 All Rights Reserved. Designed by sigma team.
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script src="../JS/Login-Register.js"></script>
+	<script src="../JS/sigma.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+</body>
+
+</html>

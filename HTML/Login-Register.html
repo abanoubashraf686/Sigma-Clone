@@ -1,0 +1,310 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="../css/Login-Register.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<script>
+			var pagename = "Login";
+		</script>
+	</head>
+
+	<body style="display: flex; flex-direction: column">
+		<header
+			style="
+				background: white;
+				width: 100%;
+				z-index: 10;
+				position: fixed;
+				height: 100px; /* left: 0; */ /* top: 0; */
+				box-shadow: 1px 1px 5px rgb(0 0 0 / 30%);
+			"
+		>
+			<div
+				style="
+					background: white;
+					width: 1920px;
+					z-index: 10;
+					position: fixed;
+					height: 100px;
+					left: 50%;
+					top: 0;
+					transform: translateX(-50%);
+				"
+			>
+				<div
+					class="logo"
+					style="
+						width: calc(1920 / 20);
+						height: 100%;
+						position: absolute; /* left: 0; */
+						width: 20%;
+						left: 10%;
+					"
+				>
+					<img src="../images/logo.png" alt="logo" />
+				</div>
+
+				<form
+				action="
+				javascript:_search_on_home();
+				"
+					style="
+						width: 50%;
+						height: 100%;
+						position: absolute;
+						left: 27%;
+						top: 0;
+					"
+				>
+					<input type="search" id="store" placeholder="key word here" />
+					<input type="submit" value="search" id="search" />
+				</form>
+
+				<div
+					class="account"
+					style="
+						width: 25%;
+						height: 100%;
+						position: absolute;
+						right: 0;
+						top: 0;
+						float: right;
+					"
+				>
+					<div class="my_account">
+						<p style="padding: 0; margin-left: 0; font-size: 20">my account</p>
+					</div>
+					<div
+						class="log_in"
+						style="
+							position: absolute;
+							width: 37%;
+							height: 32%;
+							left: 35%;
+							top: 50%;
+						"
+					>
+						<a href="login-Register.html"> login / register </a>
+					</div>
+					<div
+						class="person"
+						style="
+							position: absolute;
+							left: 21%;
+							top: 0;
+							width: 12%;
+							height: 100%;
+						"
+					>
+						<img src="../images/person.png" alt="person" />
+					</div>
+				</div>
+			</div>
+		</header>
+		<nav
+			style="position: relative; width: 100%; height: 80px; margin-top: 100px"
+		>
+			<ul
+				style="
+					height: 100%;
+					width: 900;
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+				"
+			>
+				<li style="/* position: absolute; */ /* left: 50%; */">
+					<a href="home.html">HOME</a>
+				</li>
+				<li><a href="about us.html">ABOUT US</a></li>
+				<li><a href="contact us.html">CONTACT US</a></li>
+				<li><a href="javascript:call('special offer')">SPECIAL OFFER </a></li>
+			</ul>
+		</nav>
+		<h1 style="position: relative; margin-top: 20px">Login/Register</h1>
+		<div
+			style="
+				display: flex;
+				width: 1920px;
+				left: 50%;
+				position: relative;
+				transform: translateX(-50%);
+			"
+		>
+			<div class="form">
+				<h2>Login Here</h2>
+				<div class="imgcontainer">
+					<img src="../Images/Computer login-bro.png" alt="Avatar" class="avatar" />
+				</div>
+
+				<div class="container">
+					<label for="uname"><b>Username</b></label>
+					<input
+						id="usrnameLogin"
+						type="text"
+						placeholder="Enter Username..."
+						name="uname"
+						required=""
+					/>
+					<div class="pass">
+						<label for="psw"><b>Password</b></label>
+						<input
+							id="passwordLogin"
+							type="password"
+							placeholder="Enter Password..."
+							name="psw"
+							required=""
+						/>
+						<span class="password" onclick="ShowPassword(0)">👁</span>
+					</div>
+					<p id="loginAlerts"></p>
+					<button type="submit" onclick="checkLogin()">Login</button>
+				</div>
+			</div>
+
+			<div class="form">
+				<h2>Register Here</h2>
+				<div class="imgcontainer">
+					<img src="../Images/Login-amico.png" alt="Avatar" class="avatar" />
+				</div>
+
+				<div class="container">
+					<label for="email"><b>E-mail</b></label>
+					<input
+						type="email"
+						placeholder="Enter Your E-mail..."
+						name="email"
+						required=""
+					/>
+
+					<label for="uname"><b>Username</b></label>
+					<input
+						id="usrnameRegisration"
+						type="text"
+						placeholder="Enter Username..."
+						name="uname"
+						required=""
+					/>
+					<div class="pass">
+						<label for="psw"><b>Password</b></label>
+						<input
+							id="passwordRegister"
+							type="password"
+							placeholder="Enter Password..."
+							name="psw"
+							required=""
+						/>
+						<span class="password" onclick="ShowPassword(1)">👁</span>
+					</div>
+					<div class="pass">
+						<label for="Cpsw"><b>Confirm Password</b></label>
+						<input
+							id="CpasswordRegister"
+							type="password"
+							placeholder="Enter Password Again..."
+							name="Cpsw"
+							required=""
+						/>
+						<span class="password" onclick="ShowPassword(2)">👁</span>
+					</div>
+					<p id="message"></p>
+					<button type="submit" onclick="saveData()" style="display: none ;">Register</button>
+				</div>
+			</div>
+		</div>
+		<footer class="footer" style="">
+			<div
+				class="container"
+				style="
+					width: 1920px;
+					position: relative;
+					left: 50%;
+					margin: bo;
+					margin-bottom: 90;
+					transform: translateX(-50%);
+				"
+			>
+				<div class="row">
+					<div class="col">
+						<h4><b> get help </b></h4>
+						<ul typeof="square">
+							<li><a href="javascript:call()">web development</a></li>
+							<li><a href="javascript:call()">shipping and delivery</a></li>
+							<li><a href="javascript:call()">return and replacement</a></li>
+						</ul>
+					</div>
+					<div class="col">
+						<h4><b> Brands </b></h4>
+						<ul typeof="square">
+							<li>
+								<a href="javascript:call('WESTERN DIGITAL')">Western Digital</a>
+							</li>
+							<li><a href="javascript:call('KINGSTON')">Kingston</a></li>
+							<li><a href="javascript:call('LENOVO')">Lenovo</a></li>
+							<li><a href="javascript:call('DELL');">Dell</a></li>
+						</ul>
+					</div>
+
+					<div class="col">
+						<h4><b> Seller </b></h4>
+						<ul>
+							<li><a href="javascript:call('SIGMA')  ;">sigma</a></li>
+							<li><a href="javascript:call('AULA') ;">aula</a></li>
+							<li><a href="javascript:call('INGCO')  ;">ingco</a></li>
+							<li><a href="javascript:call('MSI') ;">msi</a></li>
+						</ul>
+					</div>
+					<div class="col">
+						<h4><b> SIGNUP FOR NEWSLETTER </b></h4>
+						<ul>
+							<h5>We’ll never share your email address with a third-party</h5>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- /* icons -->
+			<div
+				class="fotr"
+				style="
+					position: absolute;
+					width: 100%;
+					/* margin-bottom: 0; */
+					/* top: 32%; */
+					/* top: 10%; */
+					bottom: 0;
+				"
+			>
+				<div class="iner-foter">
+					<div class="social-links">
+						<ul>
+							<li class="social-items">
+								<a href="#"><i class="fa-brands fa-facebook"></i></a>
+							</li>
+							<li class="social-items">
+								<a href="#"><i class="fa-brands fa-square-twitter"></i></a>
+							</li>
+							<li class="social-items">
+								<a href="#"
+									><i class="fa fa-envelope" aria-hidden="true"></i
+								></a>
+							</li>
+							<li class="social-items">
+								<a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+							</li>
+						</ul>
+					</div>
+					<div class="outer-foter">
+						sigma Computer© 2022 All Rights Reserved. Designed by sigma team.
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script src="../JS/Login-Register.js"></script>
+		<script src="../JS/sigma.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+	</body>
+</html>

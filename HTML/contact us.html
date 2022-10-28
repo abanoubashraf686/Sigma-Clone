@@ -1,0 +1,555 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>sigma</title>
+		<link rel="stylesheet" href="../CSS/style.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+		/>
+		<script>
+			var pagename = "contact us ";
+		</script>
+		<style>
+			input:focus-visible {
+				border-color: #66afe9;
+				outline: 0;
+
+				-webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%),
+					0 0 8px rgb(102 175 233 / 60%);
+				box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%),
+					0 0 8px rgb(102 175 233 / 60%);
+			}
+
+			textarea:focus-visible {
+				border-color: #66afe9;
+				outline: 0;
+
+				-webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%),
+					0 0 8px rgb(102 175 233 / 60%);
+				box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%),
+					0 0 8px rgb(102 175 233 / 60%);
+			}
+
+			section p {
+				/* font-size: 25px; */
+				/* text-transform: capitalize; */
+				/* margin-top: 80px; */
+				/* margin-left: 25px; */
+			}
+
+			section label {
+				text-transform: capitalize;
+				margin-left: 15px;
+			}
+
+			/*************** start of store *****************/
+			.your-store {
+				width: 45%;
+				height: auto;
+				margin-left: 15px;
+				float: left;
+			}
+
+			.your-store p {
+				font-size: 25px;
+				text-transform: capitalize;
+				/* margin-top: 85px; */
+				margin-left: 25px;
+			}
+
+			.home {
+				margin-top: 130px;
+				margin-left: 15px;
+				float: left;
+			}
+
+			.your-store img {
+				width: 45px;
+				height: 45px;
+			}
+
+			.address {
+				float: left;
+				margin-top: 60px;
+			}
+
+			.phone {
+				float: left;
+				margin-top: 215px;
+				margin-left: -345px;
+			}
+
+			.phone img {
+				width: 45px;
+				height: 45px;
+			}
+
+			.num {
+				float: left;
+				margin-top: 225px;
+				margin-left: -275px;
+				font-size: 22px;
+			}
+
+			.caption {
+				float: left;
+				line-height: 50px;
+				font-size: 5px;
+				margin-top: -10px;
+			}
+
+			.caption p {
+				font-size: 20px;
+				/* text-transform: capitalize; */
+				/* margin-top: 84px; */
+				/* margin-left: 25px; */
+			}
+
+			/* start of contact */
+
+			.contact {
+				width: 45%;
+				height: 800px;
+				/* margin-left: 170px; */
+				/* margin-top: 185px; */
+				float: left;
+			}
+
+			.contact span {
+				color: #ff694a;
+			}
+
+			.contact .name {
+				margin-top: 25px;
+			}
+
+			.field {
+				width: 89%;
+				height: 25px;
+				/* height: 241px; */
+				/* margin-left: 33px; */
+				display: block;
+				/* width: 100%; */
+				/* height: 34px; */
+				padding: 6px 12px;
+				font-size: 14px;
+				line-height: 1.42857143;
+				color: #555;
+				background-color: #fff;
+				background-image: none;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				-webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+				box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+				-webkit-transition: border-color ease-in-out 0.15s,
+					-webkit-box-shadow ease-in-out 0.15s;
+				-o-transition: border-color ease-in-out 0.15s,
+					box-shadow ease-in-out 0.15s;
+				transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+				margin-left: 10px;
+			}
+
+			.mail label {
+				margin-left: 11px;
+			}
+
+			.se-phone .field {
+				margin-left: 68px;
+			}
+
+			.quiry .field {
+				height: 241px;
+				margin-left: 33px;
+			}
+
+			.quiry label {
+				margin-top: -50px;
+			}
+
+			input[type="submit"] {
+				margin-top: 30px;
+				margin-left: 115px;
+				width: 80%;
+				height: 35px;
+				font-size: 17px;
+				background-color: rgb(13 13 46);
+				color: white;
+				border-radius: 5px;
+				text-transform: capitalize;
+			}
+
+			input[type="submit"]:hover {
+				margin-top: 30px;
+				margin-left: 115px;
+				width: 80%;
+				height: 38px;
+				font-size: 17px;
+				background-color: rgb(52 142 198);
+				color: white;
+				border-radius: 10px;
+				text-transform: capitalize;
+			}
+		</style>
+	</head>
+
+	<body style="display: flex">
+		<header
+			style="
+				background: white;
+				width: 100%;
+				z-index: 10;
+				position: fixed;
+				height: 100; /* left: 0; */ /* top: 0; */
+				box-shadow: 1px 1px 5px rgb(0 0 0 / 30%);
+			"
+		>
+			<div
+				style="
+					background: white;
+					width: 1920;
+					z-index: 10;
+					position: fixed;
+					height: 100;
+					left: 50%;
+					top: 0;
+					transform: translateX(-50%);
+				"
+			>
+				<div
+					class="logo"
+					style="
+						width: calc(1920 / 20);
+						height: 100%;
+						position: absolute; /* left: 0; */
+						width: 20%;
+						left: 10%;
+					"
+				>
+					<img src="../Images/logo.png" alt="logo" />
+				</div>
+
+				<form
+					action="javascript:_search_on_home();"
+					style="
+						width: 50%;
+						height: 100%;
+						position: absolute;
+						left: 27%;
+						top: 0;
+					"
+				>
+					<input type="search" id="store" placeholder="key word here" />
+					<input type="submit" value="search" id="search" />
+				</form>
+
+				<div
+					class="account"
+					style="
+						width: 25%;
+						height: 100%;
+						position: absolute;
+						right: 0;
+						top: 0;
+						float: right;
+					"
+				>
+					<div class="my_account">
+						<p>my account</p>
+					</div>
+					<div
+						class="log_in"
+						style="
+							position: absolute;
+							width: 37%;
+							height: 32%;
+							left: 35%;
+							top: 50%;
+						"
+					>
+						<a href="Login-Register.html"> login / register </a>
+					</div>
+					<div
+						class="person"
+						style="
+							position: absolute;
+							left: 21%;
+							top: 0;
+							width: 12%;
+							height: 100%;
+						"
+					>
+						<img src="../Images/person.png" alt="person" />
+
+						<button id="SaveChanges" onclick="SaveChanges()" style="display: none ;">
+							Save Changes
+						</button>
+					</div>
+				</div>
+			</div>
+		</header>
+		<nav style="position: relative; width: 100%; height: 80; margin-top: 100">
+			<ul
+				style="
+					height: 100%;
+					width: 900;
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+				"
+			>
+				<li ><a href="home.html">HOME</a></li>
+				<li><a href="about us.html">ABOUT US</a></li>
+				<li><a href="contact us.html">CONTACT US</a></li>
+				<li><a href="javascript:call('special offer')">SPECIAL OFFER </a></li>
+			</ul>
+		</nav>
+
+		<section style="display: flex; flex-direction: column">
+			<!-- map -->
+			<div
+				class="contact-us"
+				style="
+					width: 1920;
+					left: 50%;
+					position: relative;
+					transform: translateX(-50%);
+				"
+			>
+				<p style="color: #7e7e80; font-weight: 600; font-size: 20px">
+					Contact Us
+				</p>
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d863.1380999816122!2d31.28554276071321!3d30.078362114873876!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583f95f0512f29%3A0xfa1ccd201d070672!2z2YPZhNmK2Kkg2KfZhNit2KfYs9io2KfYqiDZiNin2YTZhdi52YTZiNmF2KfYqiAtINis2KfZhdi52Kkg2LnZitmGINi02YXYsw!5e0!3m2!1sar!2seg!4v1661189746330!5m2!1sar!2seg"
+					width="100%"
+					height="350"
+					style="border: 0"
+					allowfullscreen=""
+					loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade"
+				>
+				</iframe>
+			</div>
+			<!-- End-map -->
+
+			<div
+				style="
+					display: flex;
+					width: 1920;
+					position: relative;
+					left: 50%;
+					transform: translateX(-50%);
+				"
+			>
+				<div class="your-store" style="display: flex; width: 50%">
+					<div class="caption">
+						<p>YOUR STORE</p>
+						<div style="display: flex; width: 1000">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 576 512"
+								style="width: 50; height: 90"
+							>
+								<!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+								<path
+									d="M511.8 287.6L512.5 447.7C512.5 450.5 512.3 453.1 512 455.8V472C512 494.1 494.1 512 472 512H456C454.9 512 453.8 511.1 452.7 511.9C451.3 511.1 449.9 512 448.5 512H392C369.9 512 352 494.1 352 472V384C352 366.3 337.7 352 320 352H256C238.3 352 224 366.3 224 384V472C224 494.1 206.1 512 184 512H128.1C126.6 512 125.1 511.9 123.6 511.8C122.4 511.9 121.2 512 120 512H104C81.91 512 64 494.1 64 472V360C64 359.1 64.03 358.1 64.09 357.2V287.6H32.05C14.02 287.6 0 273.5 0 255.5C0 246.5 3.004 238.5 10.01 231.5L266.4 8.016C273.4 1.002 281.4 0 288.4 0C295.4 0 303.4 2.004 309.5 7.014L416 100.7V64C416 46.33 430.3 32 448 32H480C497.7 32 512 46.33 512 64V185L564.8 231.5C572.8 238.5 576.9 246.5 575.8 255.5C575.8 273.5 560.8 287.6 543.8 287.6L511.8 287.6z"
+								></path>
+							</svg>
+
+							<p style="/* margin-left: 19px; */ font-size: 20px">
+								Faculty of Computer and Information Sciences - Ain Shams
+								University
+							</p>
+						</div>
+						<div style="display: flex; width: 100%">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 512 512"
+								style="width: 50; height: 90"
+							>
+								<!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+								<path
+									d="M511.2 387l-23.25 100.8c-3.266 14.25-15.79 24.22-30.46 24.22C205.2 512 0 306.8 0 54.5c0-14.66 9.969-27.2 24.22-30.45l100.8-23.25C139.7-2.602 154.7 5.018 160.8 18.92l46.52 108.5c5.438 12.78 1.77 27.67-8.98 36.45L144.5 207.1c33.98 69.22 90.26 125.5 159.5 159.5l44.08-53.8c8.688-10.78 23.69-14.51 36.47-8.975l108.5 46.51C506.1 357.2 514.6 372.4 511.2 387z"
+								></path>
+							</svg>
+							<p>phone : 01274512016 - 0 12 8057 2723</p>
+						</div>
+						<p>
+							Sigam Computer is a company specializing in retail and wholesale
+							electronics including laptops, computers and accessories. Sigma
+							Computer has been established since 2005 in Egypt. it is engaged
+							in wholesale sale,Sigamas a first stage and retailing for more
+							than 14 years in Egypt. Toby has 4 branches in the largest and
+							most famous commercial centers in Egypt
+						</p>
+					</div>
+				</div>
+				<div class="contact">
+					<p style="margin-left: 25px; font-size: 23px">contact us</p>
+					<div class="side" style="display: flex; flex-direction: column">
+						<form
+							action="https://formspree.io/f/xknegqzv"
+							method="post"
+							style="display: flex; flex-direction: column"
+						>
+							<div
+								class="name"
+								style="margin-left: 50px; /* margin-right: auto; */"
+							>
+								<label for="name"> <span>*</span> your name </label>
+								<input
+									type="text"
+									name="your name"
+									id="name"
+									class="field"
+									style="
+										margin-left: 30px;
+										width: 90%;
+										font-family: cursive;
+										padding: 10px;
+									"
+									required="required"
+								/>
+							</div>
+							<br />
+							<div class="mail" style="margin-left: 54px">
+								<label for="email"> <span>*</span> e-mail address </label>
+								<input
+									type="email"
+									name="email"
+									id="email"
+									class="field"
+									style="margin-left: 29px; width: 90%; font-family: cursive"
+									required="required"
+								/>
+							</div>
+							<br />
+
+							<div class="se-phone" style="margin-left: 20px; width: 94%">
+								<label for="phone" style="margin-left: 50px">
+									<span>*</span> phone
+								</label>
+								<input type="text" name="phone" id="phone" class="field" />
+							</div>
+							<br />
+
+							<div class="quiry" style="margin-left: 53px">
+								<label for="enquiry"> <span>*</span> enquiry </label>
+								<textarea
+									name="enquiry"
+									rows="10"
+									id="enquiry"
+									class="field"
+									required="required"
+									style="
+										resize: none;
+										margin-top: 10px;
+										margin-left: 42px;
+										/* background: #e8f0fe; */
+										scroll-behavior: smooth;
+										scroll-margin: 42px;
+									"
+									dir="ltr"
+								></textarea>
+							</div>
+							<br />
+
+							<input type="submit" value="submit"  />
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer
+			class="footer"
+			style="
+				position: relative;
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+			"
+		>
+			<div
+				class="container"
+				style="
+					width: 1920;
+					position: relative;
+					left: 50%;
+					margin: bo;
+					margin-bottom: 90;
+					transform: translateX(-50%);
+				"
+			>
+				<div class="row">
+					<div class="col">
+						<h4><b> get help </b></h4>
+						<ul typeof="square">
+							<li><a href="javascript:call()">web development</a></li>
+							<li><a href="javascript:call()">shipping and delivery</a></li>
+							<li><a href="javascript:call()">return and replacement</a></li>
+						</ul>
+					</div>
+					<div class="col">
+						<h4><b> Brands </b></h4>
+						<ul typeof="square">
+							<li>
+								<a href="javascript:call('WESTERN DIGITAL')">Western Digital</a>
+							</li>
+							<li><a href="javascript:call('KINGSTON')">Kingston</a></li>
+							<li><a href="javascript:call('LENOVO')">Lenovo</a></li>
+							<li><a href="javascript:call('DELL');">Dell</a></li>
+						</ul>
+					</div>
+
+					<div class="col">
+						<h4><b> Seller </b></h4>
+						<ul>
+							<li><a href="javascript:call('SIGMA')  ;">sigma</a></li>
+							<li><a href="javascript:call('AULA') ;">aula</a></li>
+							<li><a href="javascript:call('INGCO')  ;">ingco</a></li>
+							<li><a href="javascript:call('MSI') ;">msi</a></li>
+						</ul>
+					</div>
+					<div class="col">
+						<h4><b> SIGNUP FOR NEWSLETTER </b></h4>
+						<ul>
+							<h5>We’ll never share your email address with a third-party</h5>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- /* icons -->
+			<div class="fotr" style="position: absolute; width: 100%; bottom: 0">
+				<div class="iner-foter">
+					<div class="social-links">
+						<ul>
+							<li class="social-items">
+								<a href="#"><i class="fa-brands fa-facebook"></i></a>
+							</li>
+							<li class="social-items">
+								<a href="#"><i class="fa-brands fa-square-twitter"></i></a>
+							</li>
+							<li class="social-items">
+								<a href="#"
+									><i class="fa fa-envelope" aria-hidden="true"></i
+								></a>
+							</li>
+							<li class="social-items">
+								<a href="#"><i class="fa-brands fa-square-instagram"></i></a>
+							</li>
+						</ul>
+					</div>
+					<div class="outer-foter">
+						sigma Computer© 2022 All Rights Reserved. Designed by sigma team.
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script src="../JS/Login-Register.js"></script>
+		<script src="../JS/sigma.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+	</body>
+</html>
